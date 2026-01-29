@@ -11,7 +11,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->validateCsrfTokens(except:[
+            '*' //jadi ini buat matiin validasi token di semua(*) sistem, 'halaman.php / *'
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

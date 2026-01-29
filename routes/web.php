@@ -26,3 +26,7 @@ Route::get('/movie', function () {
 
     echo '</ul>';
 });
+
+Route::post('/movie', function() {
+    return request()->all();
+});
