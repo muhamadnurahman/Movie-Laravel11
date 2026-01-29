@@ -45,3 +45,9 @@ Route::patch('/movie/{id}', function($id) use ($movies){
 
     return $movies;
 });
+
+Route::delete('/movie/{id}', function($id) use ($movies){
+    unset($movies[$id]);
+
+    return $movies;
+});
