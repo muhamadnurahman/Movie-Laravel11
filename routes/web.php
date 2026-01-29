@@ -16,25 +16,8 @@ Route::get('/', function () {
         ];
     }
 
-Route::get('/movie', function () {
-    $movies = [];
-
-    for ($i = 0 ; $i < 10; $i++){
-        $movies[]=[
-            'title' => 'Movie',
-            'year' => '2025',
-            'genre' => 'Action',
-        ];
-    }
-
-    echo '<h1>Movies</h1>';
-    echo '<ul>';
-
-    foreach($movies as $movie) {
-        echo '<li>' .$movie['title'] . '-' . $movie['year'] . '-'. $movie['genre'] . '</li>';
-    }
-
-    echo '</ul>';
+Route::get('/movie', function () use ($movies) {
+    return $movies;
 });
 
 Route::post('/movie', function() use ($movies){
@@ -44,12 +27,13 @@ Route::post('/movie', function() use ($movies){
         'year' => request('year'),
     ];
 
-    echo '<h1>Movies</h1>';
-    echo '<ul>';
+    return $movies;
+});
 
-    foreach($movies as $movie) {
-        echo '<li>' .$movie['title'] . '-' . $movie['year'] . '-'. $movie['genre'] . '</li>';
-    }
+Route::put('/movie', function() use ($movies){
+    $movies[2]['title'] = request('title');
+    $movies[2]['year'] = request('year');
+    $movies[2]['genre'] = request('genre');
 
-    echo '</ul>';
+    return $movies;
 });
