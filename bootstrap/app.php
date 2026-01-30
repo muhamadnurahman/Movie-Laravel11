@@ -14,6 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
     $middleware->alias([
         'isMember' => App\Http\Middleware\CheckMembership::class,
+        'IsAuth' => App\Http\Middleware\IsAuth::class,
     ]);
 
     $middleware->validateCsrfTokens(except:[
