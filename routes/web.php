@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\CheckMembership;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,6 +20,11 @@ Route::get('/', function () {
 Route::get('/movie', function () use ($movies) {
     return $movies;
 });
+
+Route::get('/movie/{id}', function () use ($movies) {
+    return $movies;
+})->middleware(CheckMembership::class);
+
 
 Route::post('/movie', function() use ($movies){
     $movies[] = [
@@ -50,4 +56,8 @@ Route::delete('/movie/{id}', function($id) use ($movies){
     unset($movies[$id]);
 
     return $movies;
+});
+
+Route::get('/pricing', function() {
+    return 'Please, Buy a membership!';
 });
