@@ -11,7 +11,7 @@ Route::get('/', function () {
 
     for ($i = 0 ; $i < 10; $i++){
         $movies[]=[
-            'title' => 'Movie',
+            'title' => 'Movie ' . $i,
             'year' => '2025',
             'genre' => 'Action',
         ];
@@ -21,8 +21,8 @@ Route::get('/movie', function () use ($movies) {
     return $movies;
 });
 
-Route::get('/movie/{id}', function () use ($movies) {
-    return $movies;
+Route::get('/movie/{id}', function ($id) use ($movies) {
+    return $movies[$id];
 })->middleware(CheckMembership::class);
 
 
