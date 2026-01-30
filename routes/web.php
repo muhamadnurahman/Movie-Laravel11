@@ -16,16 +16,24 @@ Route::get('/', function () {
         ];
     }
 
-Route::get('/movie', function () use ($movies) {
+
+Route::group(
+    [
+        'middleware' => ['IsAuth'],
+        'prefix' => 'movie',
+        'as' => 'movie.'
+    ], function () use ($movies) {
+
+    Route::get('/movie', function () use ($movies) {
     return $movies;
 });
 
-Route::get('/movie/{id}', function ($id) use ($movies) {
+Route::get('/{id}', function ($id) use ($movies) {
     return $movies[$id];
-})->middleware(['isMember','IsAuth']);
+})->middleware(['isMember']);
 
 
-Route::post('/movie', function() use ($movies){
+Route::post('/', function() use ($movies){
     $movies[] = [
         'title' => request('title'),
         'genre' => request('genre'),
@@ -35,7 +43,7 @@ Route::post('/movie', function() use ($movies){
     return $movies;
 });
 
-Route::put('/movie/{id}', function($id) use ($movies){
+Route::put('/{id}', function($id) use ($movies){
     $movies[$id]['title'] = request('title');
     $movies[$id]['year'] = request('year');
     $movies[$id]['genre'] = request('genre');
@@ -43,7 +51,7 @@ Route::put('/movie/{id}', function($id) use ($movies){
     return $movies;
 });
 
-Route::patch('/movie/{id}', function($id) use ($movies){
+Route::patch('/{id}', function($id) use ($movies){
     $movies[$id]['title'] = request('title');
     $movies[$id]['year'] = request('year');
     $movies[$id]['genre'] = request('genre');
@@ -51,10 +59,12 @@ Route::patch('/movie/{id}', function($id) use ($movies){
     return $movies;
 });
 
-Route::delete('/movie/{id}', function($id) use ($movies){
+Route::delete('/{id}', function($id) use ($movies){
     unset($movies[$id]);
 
     return $movies;
+});
+    
 });
 
 Route::get('/pricing', function() {
