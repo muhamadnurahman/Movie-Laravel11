@@ -52,6 +52,11 @@ Route::get('/login', function(){
 })->name('login');
 
 Route::post('/request', function(request $request){
-    $data = $request->date('schedule', 'Y-m-d', 'Asia/Jakarta');
-    return $data->diffForHumans();
+    // if($request->has(['name', 'password'])){
+    //     return 'Login berhasil';
+    // }
+    if($request->hasAny(['name', 'password'])){
+        return 'Login berhasil';
+    }
+    return 'Gagal';
 });
