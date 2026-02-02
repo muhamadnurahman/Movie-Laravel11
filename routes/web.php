@@ -52,6 +52,6 @@ Route::get('/login', function(){
 })->name('login');
 
 Route::get('/request', function(request $request){
-    $user = $request->all();
-    return $user['name'];
+    $filtered = $request->collect()->only(['name', 'age']);
+    return $filtered;
 });
