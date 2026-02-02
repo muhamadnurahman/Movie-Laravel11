@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -24,9 +25,7 @@ Route::group(
         'as' => 'movie.'
     ], function () use ($movies) {
 
-    Route::get('/movie', function () use ($movies) {
-    return $movies;
-});
+    Route::get('/',[MovieController::class, 'index']);
 
 Route::get('/{id}', function ($id) use ($movies) {
     return $movies[$id];

@@ -12,10 +12,14 @@ class MovieController extends Controller
     {
         for ($i = 0 ; $i < 10; $i++){
         $this->movies[]=[
-            'title' => 'Movie ' . $i,
+            'title' => 'Movie Controller ' . $i,
             'year' => '2025',
             'genre' => 'Action',
         ];
     }
+    }
+
+    public function index(){
+        return $this->movies;
     }
 }
