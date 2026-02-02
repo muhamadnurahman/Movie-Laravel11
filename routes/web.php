@@ -52,8 +52,6 @@ Route::get('/login', function(){
 })->name('login');
 
 Route::post('/request', function(request $request){
-    // $input = $request->input('colors.*');
-    // return $input;
-    $query = $request->query('gender');
-    return $query;
+    $data = $request->date('schedule', 'Y-m-d', 'Asia/Jakarta');
+    return $data->diffForHumans();
 });
