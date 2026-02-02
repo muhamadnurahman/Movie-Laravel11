@@ -25,9 +25,9 @@ Route::group(
         'as' => 'movie.'
     ], function () use ($movies) {
 
-    Route::get('/',[MovieController::class, 'index']);
+Route::get('/',[MovieController::class, 'index']);
 
-Route::get('/{id}', [MovieController::class, 'show'])->middleware(['isMember']);
+Route::get('/{id}', [MovieController::class, 'show']);
 
 
 Route::post('/', [MovieController::class, 'store']);
@@ -36,11 +36,7 @@ Route::put('/{id}', [MovieController::class, 'update']);
 
 Route::patch('/{id}', [MovieController::class, 'update']);
 
-Route::delete('/{id}', function($id) use ($movies){
-    unset($movies[$id]);
-
-    return $movies;
-});
+Route::delete('/{id}', [MovieController::class, 'destroy']);
     
 });
 

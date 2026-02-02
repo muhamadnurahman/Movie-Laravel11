@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class MovieController extends Controller
+class MovieController extends Controller implements HasMiddleware
 {
     public $movies;
 
@@ -17,6 +19,16 @@ class MovieController extends Controller
             'genre' => 'Action',
         ];
     }
+    }
+
+    public static function middleware()
+    {
+        return [
+            'IsAuth',
+            new Middleware('isMember', only:['show']), //hanya
+            // new Middleware('isMember', except:['show']), // kecuali
+
+        ];
     }
 
     public function index(){
@@ -44,5 +56,10 @@ return $this->movies;
     $this->movies[$id]['genre'] = request('genre');
 
     return $this->movies[$id];
+    }
+
+    public function destroy($id){
+        unset($this->movies[$id]);
+        return $this->movies;
     }
 }
