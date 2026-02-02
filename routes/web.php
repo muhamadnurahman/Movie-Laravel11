@@ -52,5 +52,7 @@ Route::get('/login', function(){
 })->name('login');
 
 Route::get('/request', function(request $request){
-    dd($request);
+    if($request->is('request')){
+        return true;
+    }
 });
