@@ -55,8 +55,16 @@ Route::post('/request', function(request $request){
     // if($request->has(['name', 'password'])){
     //     return 'Login berhasil';
     // }
-    if($request->hasAny(['name', 'password'])){
-        return 'Login berhasil';
+    // if($request->hasAny(['name', 'password'])){
+    //     return 'Login berhasil';
+    // }
+
+    $request->merge(['email' => 'a@b.com']);
+
+    if($request->missing('email')){
+        return 'Email tidak ada';
+    }else {
+        return 'Datanya ada';
     }
     return 'Gagal';
 });
