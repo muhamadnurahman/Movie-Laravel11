@@ -50,12 +50,13 @@ return $this->movies;
 
     }
 
-    public function update($id){
-    $this->movies[$id]['title'] = request('title');
-    $this->movies[$id]['year'] = request('year');
-    $this->movies[$id]['genre'] = request('genre');
+    public function update(Request $request, $id){
+    // $this->movies[$id]['title'] = request('title');
+    // $this->movies[$id]['year'] = request('year');
+    // $this->movies[$id]['genre'] = request('genre');
 
-    return $this->movies[$id];
+    // return $this->movies[$id];
+    return $request->all();
     }
 
     public function destroy($id){
