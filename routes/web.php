@@ -51,7 +51,9 @@ Route::get('/login', function(){
 
 })->name('login');
 
-Route::get('/request', function(request $request){
-    $filtered = $request->collect()->only(['name', 'age']);
-    return $filtered;
+Route::post('/request', function(request $request){
+    // $input = $request->input('colors.*');
+    // return $input;
+    $query = $request->query('gender');
+    return $query;
 });
