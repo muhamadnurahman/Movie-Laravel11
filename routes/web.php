@@ -30,15 +30,7 @@ Route::group(
 Route::get('/{id}', [MovieController::class, 'show'])->middleware(['isMember']);
 
 
-Route::post('/', function() use ($movies){
-    $movies[] = [
-        'title' => request('title'),
-        'genre' => request('genre'),
-        'year' => request('year'),
-    ];
-
-    return $movies;
-});
+Route::post('/', [MovieController::class, 'store']);
 
 Route::put('/{id}', function($id) use ($movies){
     $movies[$id]['title'] = request('title');

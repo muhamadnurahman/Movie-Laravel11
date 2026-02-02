@@ -22,7 +22,19 @@ class MovieController extends Controller
     public function index(){
         return $this->movies;
     }
+
     public function show($id){
         return $this->movies[$id];
+    }
+
+    public function store(){
+       $this->movies[] = [
+        'title' => request('title'),
+        'genre' => request('genre'),
+        'year' => request('year'),
+    ];
+
+return $this->movies;
+
     }
 }
