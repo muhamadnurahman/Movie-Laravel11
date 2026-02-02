@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('welcome');
@@ -49,3 +50,7 @@ Route::get('/login', function(){
     return 'Login Page';
 
 })->name('login');
+
+Route::get('/request', function(request $request){
+    dd($request);
+});
