@@ -52,7 +52,6 @@ Route::get('/login', function(){
 })->name('login');
 
 Route::get('/request', function(request $request){
-    if($request->is('request')){
-        return true;
-    }
+    $user = $request->all();
+    return $user['name'];
 });
