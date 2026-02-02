@@ -37,4 +37,12 @@ class MovieController extends Controller
 return $this->movies;
 
     }
+
+    public function update($id){
+    $this->movies[$id]['title'] = request('title');
+    $this->movies[$id]['year'] = request('year');
+    $this->movies[$id]['genre'] = request('genre');
+
+    return $this->movies[$id];
+    }
 }
