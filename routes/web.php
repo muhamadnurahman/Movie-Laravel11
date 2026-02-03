@@ -102,3 +102,7 @@ Route::get('/privacy', function () {
         return 'Terms page';
     });
 });
+
+Route::get('/external', function(){
+    return redirect('/');
+});
