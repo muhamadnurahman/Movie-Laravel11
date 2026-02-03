@@ -3,6 +3,7 @@
 use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 Route::get('/', function () {
     return view('welcome');
@@ -67,4 +68,23 @@ Route::post('/request', function(request $request){
         return 'Datanya ada';
     }
     return 'Gagal';
+});
+
+Route::get('/response', function(){
+    return response('OK')->header('Content-Type', 'text/plain');
+});
+
+Route::get('/cache-control', function(){
+    return Response::make('Page allow to cache', 200)
+    ->header('Cache-Control', 'public, max-age=86400');
+});
+
+Route::middleware('cache.headers:public;max_age=2628000;etag')->group(function () {
+    Route::get('/privacy', function () {
+        return 'Privacy page';
+    });
+
+    Route::get('/terms', function () {
+        return 'Terms page';
+    });
 });
