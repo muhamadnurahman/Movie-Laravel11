@@ -86,6 +86,9 @@ Route::get('/dashboard', function(){
     return response('login berhasil', 200)->cookie('user', $user);
 });
 
+Route::get('/logout', function(){
+    return response('logout berhasil', 200)->withoutCookie('user');
+});
 
 Route::get('/privacy', function () {
         return 'Privacy page';
