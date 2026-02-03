@@ -32,7 +32,10 @@ class MovieController extends Controller implements HasMiddleware
     }
 
     public function index(){
-        return $this->movies;
+        return response()->json([
+            'movies' => $this->movies,
+            'message' => 'List of movies'
+        ], 200);
     }
 
     public function show($id){
