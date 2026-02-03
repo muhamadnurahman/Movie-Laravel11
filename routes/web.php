@@ -81,13 +81,18 @@ Route::get('/cache-control', function(){
 
 Route::middleware('cache.headers:public;max_age=2628000;etag')->group(function () {
     
+
+Route::get('/home', function(){
+    return 'Home dari halaman '. request()->sourceUrl;
+})->name('home');
+
 Route::get('/dashboard', function(){
     $user = 'admin';
     return response('login berhasil', 200)->cookie('user', $user);
 });
 
 Route::get('/logout', function(){
-    return response('logout berhasil', 200)->withoutCookie('user');
+    return redirect()->route('home', ['sourceUrl' => 'logout'])->withoutCookie('user');
 });
 
 Route::get('/privacy', function () {
