@@ -23,23 +23,20 @@ class MovieController extends Controller implements HasMiddleware
 
     public static function middleware()
     {
-        return [
-            'IsAuth',
-            new Middleware('isMember', only:['show']), //hanya
-            // new Middleware('isMember', except:['show']), // kecuali
+        // return [
+        //     'IsAuth',
+        //     new Middleware('isMember', only:['show']), //hanya
+        //     // new Middleware('isMember', except:['show']), // kecuali
 
-        ];
+        // ];
     }
 
     public function index(){
-        return response()->json([
-            'movies' => $this->movies,
-            'message' => 'List of movies'
-        ], 200);
+        return view('movies.index');
     }
 
     public function show($id){
-        return $this->movies[$id];
+        return view('movies.show');
     }
 
     public function store(){

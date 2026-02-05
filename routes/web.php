@@ -27,7 +27,7 @@ Route::get('/home', function(){
 
 Route::group(
     [
-        'middleware' => ['IsAuth'],
+        'middleware' => [],
         'prefix' => 'movie',
         'as' => 'movie.'
     ], function () use ($movies) {
