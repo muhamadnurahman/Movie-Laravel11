@@ -10,6 +10,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', function(){
+    return view('home',['greeting' => 'Hello']);
+});
+
     $movies = [];
 
     for ($i = 0 ; $i < 10; $i++){
