@@ -33,7 +33,13 @@ class MovieController extends Controller implements HasMiddleware
 
     public function index(){
         $movies = $this->movies;
-        return view('movies.index', ['movies' => $movies]);
+        // return view('movies.index', ['movies' => $movies]);
+        return view('movies.index', compact('movies'))->with([
+            'titlePage' => 'movie List',
+        ]);
+        // return view('movies.index')->with([
+        //     'movies' => $movies
+        // ]);
     }
 
     public function show($id){

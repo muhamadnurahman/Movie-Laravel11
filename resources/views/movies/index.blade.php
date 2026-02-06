@@ -11,7 +11,8 @@
             <li><a href="<?= $value ?>"><?= $key ?></a></li>
         <?php endforeach; ?>
     </ul>
-    <h1>Movie List</h1>
+    <h1>{{ $titlePage }}</h1>
+    {{ dd($config) }}
     {{ dd($movies) }}
 </body>
 </html>
