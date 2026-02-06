@@ -11,6 +11,11 @@ $gretting = 'Hello world';
     <title>Home</title>
 </head>
 <body>
+    <ul>
+        <?php foreach($menu as $key => $value):?>
+            <li><a href="<?= $value ?>"><?= $key ?></a></li>
+        <?php endforeach; ?>
+    </ul>
     <h1>Home paged</h1>
     <p>{{ $gretting }}</p>
     <p><?= $gretting ?></p>

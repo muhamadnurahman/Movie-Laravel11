@@ -6,7 +6,12 @@
     <title>Movie Index</title>
 </head>
 <body>
-    <h1>Movies</h1>
+    <ul>
+        <?php foreach($menu as $key => $value):?>
+            <li><a href="<?= $value ?>"><?= $key ?></a></li>
+        <?php endforeach; ?>
+    </ul>
+    <h1>Movie List</h1>
     {{ dd($movies) }}
 </body>
 </html>
