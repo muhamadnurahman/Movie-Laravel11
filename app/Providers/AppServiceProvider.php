@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Views\Composers\MenuComposer;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 
@@ -27,12 +28,7 @@ class AppServiceProvider extends ServiceProvider
         //     'Contact' => '/contact',
         // ]);
 
-        View::composer(['*'], function ($view){
-            $view->with('menu', [
-            'Home' => '/',
-            'About' => '/about',
-            'Contact' => '/contact',
-            ]);
-        });
+        View::composer('*', MenuComposer::class);
+            
     }
 }
