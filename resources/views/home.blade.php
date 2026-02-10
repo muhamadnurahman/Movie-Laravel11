@@ -16,13 +16,19 @@
     <ul>
         <li>Name: {{ $user['name'] }}</li>
         <li>Email: {{ $user['email'] }}</li>
-        @if ($user['role'] == 'admin')
+        <!-- @if ($user['role'] == 'admin')
         <li>Role: Administrator</li>
         @elseif ($user['role'] == 'user')
         <li>Role: User</li>
         @else
         <li>Role: Unknown</li>
-        @endif
+        @endif -->
+
+        <li>Role: {{
+            $user['role'] == 'admin' ? 'Administrator' : 
+            ($user['role'] == 'user' ? 'User' : 'Unknown')}}
+        </li>
+
     </ul>
 </body>
 </html>

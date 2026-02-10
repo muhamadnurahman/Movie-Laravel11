@@ -14,7 +14,7 @@ Route::get('/home', function(){
     $user = [
         'name' => 'John Doe',
         'email' => 'jdoe@mail.com',
-        'role' => 'admin'
+        'role' => ''
     ];
     return view('home', compact('user'));
 });
