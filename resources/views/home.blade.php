@@ -19,7 +19,7 @@
 <li>{{ $movies[$index]['title'] }} - {{ $movies[$index]['year'] }}</li>
 @endfor --}}
 
-        @foreach ($movies as $movie)
+        {{-- @foreach ($movies as $movie)
             @if ($movie['year'] < 2000)
                 @continue
             @endif
@@ -28,15 +28,15 @@
                 @break
             @endif
             <li>{{ $movie['title'] }} - {{ $movie['year'] }}</li>
-        @endforeach
+        @endforeach --}}
 
-         {{-- @forelse($movies as $movie)
+        {{-- @forelse($movies as $movie)
 <li>{{ $movie['title'] }} - {{ $movie['year'] }}</li>
 @empty
     <li>No Movies found.</li>
 @endforelse  --}}
 
-         {{-- @php
+        {{-- @php
             $index = 0;
         @endphp
 
@@ -47,6 +47,17 @@
     @endphp
 @endwhile  --}}
     </ul>
+    @foreach ($movies as $movie)
+        {{-- <p>{{ $loop->iteration }}. {{ $movie['title'] }} - {{ $movie['year'] }}</p> --}}
+        {{-- @if ($loop->first)
+            <p>First Movie: {{ $movie['title'] }} - {{ $movie['year'] }}</p>
+        @elseif($loop->last)
+            <p>Last Movie: {{ $movie['title'] }} - {{ $movie['year'] }}</p>
+        @else
+            <p>{{ $movie['title'] }} - {{ $movie['year'] }}</p>
+        @endif --}}
+        <p>Movie {{ $loop->remaining +1 }} of {{ $loop->count }} : {{ $movie['title'] }} - {{ $movie['year'] }}</p>
+    @endforeach
 </body>
 
 </html>
