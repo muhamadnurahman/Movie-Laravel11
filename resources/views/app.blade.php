@@ -10,18 +10,10 @@
 </head>
 
 <body class="bg-gray-900 text-white">
-    <header class="flex justify-between p-5 bg-gray-800">
-        <h1 class="text-2xl font-bold">Movie App</h1>
-        <button class="bg-blue-600 px-4 py-2 rounded hover: bg-blue-500">Add</button>
-    </header>
+    @include('_partials._header')
 
-    <div class="border-t border-b border-gray-200 text-white">
-        <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-            <h1 class="text-4xl font-bold text-center">Welcome to Laravel 11</h1>
-            <p class="text-xl text-center mt-6">This is a simple example of Laravel 11 .< /p>
-        </div>
-    </div>
-
+    <section class="container mx-auto p-5">
+        @yield('content')
+    </section>
 </body>
-
 </html>

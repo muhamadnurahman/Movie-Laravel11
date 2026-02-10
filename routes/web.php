@@ -11,8 +11,7 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function(){
-    $MovieCategory = 'action';
-    return view('home', compact('MovieCategory'));
+    return view('home');
 });
 
     $movies = [];
@@ -88,22 +87,22 @@ Route::get('/cache-control', function(){
 Route::middleware('cache.headers:public;max_age=2628000;etag')->group(function () {
     
 
-Route::get('/home', function(){
-    $movies = [
-        ['title' => 'The Matrix', 'year' => 1999],
-        ['title' => 'Inception', 'year' => 2010],
-        ['title' => 'Interstellar', 'year' => 2014],
-        ['title' => 'The Dark Night', 'year' => 2008],
-        ['title' => 'Pulp Fiction', 'year' => 1994],
-        ['title' => 'Avenger : Endgame', 'year' => 2019],
-        ['title' => 'The Shawhank Redemption', 'year' => 1994],
-        ['title' => 'Parasite', 'year' => 2019],
-        ['title' => 'The God Father', 'year' => 1972],
-        ['title' => 'Spider-Man: Into the Spider-Verse', 'year' => 2018],
-    ];
+// Route::get('/home', function(){
+//     $movies = [
+//         ['title' => 'The Matrix', 'year' => 1999],
+//         ['title' => 'Inception', 'year' => 2010],
+//         ['title' => 'Interstellar', 'year' => 2014],
+//         ['title' => 'The Dark Night', 'year' => 2008],
+//         ['title' => 'Pulp Fiction', 'year' => 1994],
+//         ['title' => 'Avenger : Endgame', 'year' => 2019],
+//         ['title' => 'The Shawhank Redemption', 'year' => 1994],
+//         ['title' => 'Parasite', 'year' => 2019],
+//         ['title' => 'The God Father', 'year' => 1972],
+//         ['title' => 'Spider-Man: Into the Spider-Verse', 'year' => 2018],
+//     ];
 
-    return view('home', compact('movies'));
-});
+//     return view('home', compact('movies'));
+// });
 Route::get('/dashboard', function(){
     $user = 'admin';
     return response('login berhasil', 200)->cookie('user', $user);
