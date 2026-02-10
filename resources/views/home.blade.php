@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
@@ -48,16 +49,9 @@
 @endwhile  --}}
     </ul>
     @foreach ($movies as $movie)
-        {{-- <p>{{ $loop->iteration }}. {{ $movie['title'] }} - {{ $movie['year'] }}</p> --}}
-        {{-- @if ($loop->first)
-            <p>First Movie: {{ $movie['title'] }} - {{ $movie['year'] }}</p>
-        @elseif($loop->last)
-            <p>Last Movie: {{ $movie['title'] }} - {{ $movie['year'] }}</p>
-        @else
-            <p>{{ $movie['title'] }} - {{ $movie['year'] }}</p>
-        @endif --}}
-        <p>Movie {{ $loop->remaining +1 }} of {{ $loop->count }} : {{ $movie['title'] }} - {{ $movie['year'] }}</p>
+        <p class="{{ $loop->first ? 'font-bold' : ($loop->last ? 'italic' : '') }}">
+            {{ $movie['title'] }} - {{ $movie['year'] }}
+        </p>
     @endforeach
 </body>
-
 </html>
