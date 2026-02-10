@@ -12,23 +12,20 @@
     @endforeach
 </nav>
     <h1>Home paged</h1>
-    Profile :
-    <ul>
-        <li>Name: {{ $user['name'] }}</li>
-        <li>Email: {{ $user['email'] }}</li>
-        <!-- @if ($user['role'] == 'admin')
-        <li>Role: Administrator</li>
-        @elseif ($user['role'] == 'user')
-        <li>Role: User</li>
-        @else
-        <li>Role: Unknown</li>
-        @endif -->
+    <h2>Movie Category</h2>
 
-        <li>Role: {{
-            $user['role'] == 'admin' ? 'Administrator' : 
-            ($user['role'] == 'user' ? 'User' : 'Unknown')}}
-        </li>
-
-    </ul>
+    @switch($MovieCategory)
+        @case('action')
+            <h4>Action Movies</h4>
+            @break
+        @case('comedy')
+            <h4>Comedy Movies</h4>
+            @break
+        @case('romance')
+            <h4>Romance Movies</h4>
+            @break
+        @default
+            <h4>Other Movies</h4>
+    @endswitch
 </body>
 </html>

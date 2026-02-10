@@ -11,12 +11,8 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function(){
-    $user = [
-        'name' => 'John Doe',
-        'email' => 'jdoe@mail.com',
-        'role' => ''
-    ];
-    return view('home', compact('user'));
+    $MovieCategory = 'action';
+    return view('home', compact('MovieCategory'));
 });
 
     $movies = [];
