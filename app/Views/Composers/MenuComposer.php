@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Views\Composers;
+use Illuminate\View\View;
 
 class MenuComposer {
     public function compose($view)

@@ -11,7 +11,12 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function(){
-    return view('home',['greeting' => 'Hello']);
+    $user = [
+        'name' => 'John Doe',
+        'email' => 'jdoe@mail.com',
+        'role' => 'admin'
+    ];
+    return view('home', compact('user'));
 });
 
     $movies = [];
@@ -87,7 +92,7 @@ Route::get('/cache-control', function(){
 Route::middleware('cache.headers:public;max_age=2628000;etag')->group(function () {
     
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/dashboard', function(){
     $user = 'admin';

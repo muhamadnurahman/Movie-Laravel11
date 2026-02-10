@@ -1,8 +1,3 @@
-<?php
-
-$gretting = 'Hello world';
-
-?>  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,13 +6,23 @@ $gretting = 'Hello world';
     <title>Home</title>
 </head>
 <body>
-    <ul>
-        <?php foreach($menu as $key => $value):?>
-            <li><a href="<?= $value ?>"><?= $key ?></a></li>
-        <?php endforeach; ?>
-    </ul>
+    <nav>
+    @foreach($menu as $label => $url)
+        <a href="{{ $url }}">{{ $label }}</a> |
+    @endforeach
+</nav>
     <h1>Home paged</h1>
-    <p>{{ $gretting }}</p>
-    <p><?= $gretting ?></p>
+    Profile :
+    <ul>
+        <li>Name: {{ $user['name'] }}</li>
+        <li>Email: {{ $user['email'] }}</li>
+        @if ($user['role'] == 'admin')
+        <li>Role: Administrator</li>
+        @elseif ($user['role'] == 'user')
+        <li>Role: User</li>
+        @else
+        <li>Role: Unknown</li>
+        @endif
+    </ul>
 </body>
 </html>
