@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
 </head>
 
 <body>
@@ -49,9 +49,7 @@
 @endwhile  --}}
     </ul>
     @foreach ($movies as $movie)
-        <p class="{{ $loop->first ? 'font-bold' : ($loop->last ? 'italic' : '') }}">
-            {{ $movie['title'] }} - {{ $movie['year'] }}
-        </p>
+        @include('partials._movie', ['movie' => $movie])
     @endforeach
 </body>
 </html>
