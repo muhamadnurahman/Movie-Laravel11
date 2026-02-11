@@ -152,12 +152,14 @@ class MovieController extends Controller implements HasMiddleware
 
     public function update(Request $request, $id)
     {
-        $this->movies[$id]['title'] = request('title');
-        $this->movies[$id]['year'] = request('year');
-        $this->movies[$id]['genre'] = request('genre');
+        $this->movies[$id]['title'] = $request['title'];
+        $this->movies[$id]['description'] = $request['description'];
+        $this->movies[$id]['release_date'] = $request['release_date'];
+        $this->movies[$id]['cast'] = explode(',', $request['cast']);
+        $this->movies[$id]['genres'] = explode(',', $request['genres']);
+        $this->movies[$id]['image'] = $request['image'];
 
-        return $this->movies[$id];
-        return $request->all();
+        return $this->show($id);
     }
 
     public function destroy($id)
