@@ -106,7 +106,8 @@ class MovieController extends Controller implements HasMiddleware
         // ];
     }
 
-    public function index(){
+    public function index()
+    {
         $movies = $this->movies;
         // return view('movies.index', ['movies' => $movies]);
         return view('movies.index', compact('movies'))->with([
@@ -114,7 +115,8 @@ class MovieController extends Controller implements HasMiddleware
         ]);
     }
 
-    public function show($id){
+    public function show($id)
+    {
         $movie = $this->movies[$id];
         return view('movies.show', ['movie' => $movie]);
     }
@@ -122,29 +124,35 @@ class MovieController extends Controller implements HasMiddleware
     public function create()
     {
         return view('movies.create');
-    } 
-
-    public function store(){
-       $this->movies[] = [
-        'title' => request('title'),
-        'genre' => request('genre'),
-        'year' => request('year'),
-    ];
-
-return $this->movies;
-
     }
 
-    public function update(Request $request, $id){
-    // $this->movies[$id]['title'] = request('title');
-    // $this->movies[$id]['year'] = request('year');
-    // $this->movies[$id]['genre'] = request('genre');
+    public function store(request $request)
+    {
+        $newMovie = [
+            'title' => $request['title'],
+            'description' => $request['description'],
+            'release_date' => $request['release_date'],
+            'cast' => explode(',', $request['cast']),
+            'genres' => explode(',', $request['genres']),
+            'image' => $request['image'],
+        ];
 
-    // return $this->movies[$id];
-    return $request->all();
+        $this->movies[] = $newMovie;
+        return $this->index();
     }
 
-    public function destroy($id){
+    public function update(Request $request, $id)
+    {
+        // $this->movies[$id]['title'] = request('title');
+        // $this->movies[$id]['year'] = request('year');
+        // $this->movies[$id]['genre'] = request('genre');
+
+        // return $this->movies[$id];
+        return $request->all();
+    }
+
+    public function destroy($id)
+    {
         unset($this->movies[$id]);
         return $this->movies;
     }
