@@ -6,8 +6,8 @@
 
         <div class="absolute top-2 right-2 space-x-2 opacity-0 group-hover:opacity-100 transition">
             <a href="{{ route('movie.edit', $index) }}" class="bg-green-600 p-1 rounded hover:bg-green-500">✏️</a>
-            <form id="delete-form-{{ $index }}" action="{{ route('movie.destroy', $index) }}"
-                method="POST" style="display: none">
+            <form id="delete-form-{{ $index }}" action="{{ route('movie.destroy', $index) }}" method="POST"
+                style="display: none">
                 @csrf
                 @method('DELETE')
             </form>
