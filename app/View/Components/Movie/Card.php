@@ -2,9 +2,11 @@
 
 namespace App\View\Components\Movie;
 
+use Carbon\Carbon;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+Use Illuminate\Support\Str;
 
 class Card extends Component
 {
@@ -19,7 +21,7 @@ class Card extends Component
     {
         $this->index = $index;
         $this->title = $title;
-        $this->releasedate = $releasedate;
+        $this->releasedate = Carbon::parse($releasedate)->format('M d, Y');
         $this->image = $image;
     }
 
@@ -28,6 +30,7 @@ class Card extends Component
      */
     public function render(): View|Closure|string
     {
+        $this->title = Str::upper($this->title);
         return view('components.movie.card');
     }
 }
