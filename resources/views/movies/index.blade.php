@@ -18,10 +18,10 @@
                         @csrf
                         @method('DELETE')
                     </form>
-                <a href="{{ route('movie.destroy', $loop->index) }}" onclick="event.preventDefault(); confirm('yakin mau dihapus?🥲'); document.getElementById('delete-form-{{ $loop->index }}').submit();" class="bg-red-600 p-1 rounded hover:bg-red-500">🗑️</a>
-            </div>
-        </div>
-    </a>
+                    <a href="{{ route('movie.destroy', $loop->index) }}" onclick="event.preventDefault(); confirm('yakin mau dihapus?🥲'); document.getElementById('delete-form-{{ $loop->index }}').submit();" class="bg-red-600 p-1 rounded hover:bg-red-500">🗑️</a>
+                </div>
+            </a>
+    </div>
     @endforeach
 </div>
 
