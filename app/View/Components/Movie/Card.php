@@ -22,7 +22,7 @@ class Card extends Component
         $this->index = $index;
         $this->title = $title;
         $this->releasedate = $releasedate;
-        $this->image = $image;
+        $this->image = $image ;
 
         if($this->isValid()) {
         $this->title = Str::upper($title);
@@ -32,9 +32,22 @@ class Card extends Component
 
     private function isValid() : bool
     {
-        return $this->title && $this->releasedate && $this->image;
+        return $this->title && $this->releasedate;
     }
 
+
+    public function getImage(): string
+    {
+        if($this->image) {
+            return $this->image;
+        }
+        return 'https://placehold.co/300x450';
+    }
+
+    public function isReleased(): bool
+    {
+        return $this->releasedate;
+    }
     /**
      * Get the view / contents that represent the component.
      */
