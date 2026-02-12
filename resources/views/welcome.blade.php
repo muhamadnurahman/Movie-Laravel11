@@ -1,12 +1,11 @@
 <x-app>
 
     <x-slot name="sidebar">
-        <ul class="space-y-4">
-            <li><a href="#" class="text-white hover:text-gray-300">Dashboard</a></li>
-            <li><a href="#" class="text-white hover:text-gray-300">Profile</a></li>
-            <li><a href="#" class="text-white hover:text-gray-300">Settings</a></li>
-            <li><a href="#" class="text-white hover:text-gray-300">Logout</a></li>
-        </ul>
+        <x-partials.sidebar :menus="[
+            ['title' => 'Dashboard', 'link' => '/dashboard'],
+            ['title' => 'Profile', 'link' => '/profile'],
+            ['title' => 'Settings', 'link' => '/settings'],
+        ]"></x-partials.sidebar>
     </x-slot>
 
     <x-slot name="main">
