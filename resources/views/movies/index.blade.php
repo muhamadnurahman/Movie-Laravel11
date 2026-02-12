@@ -13,7 +13,12 @@
             <div class="absolute top-2 right-2 space-x-2 opacity-0 group-hover:opacity-100 transition">
                 <a href="{{ route('movie.edit', $loop->index) }}" 
                     class="bg-green-600 p-1 rounded hover:bg-green-500">✏️</a>
-                <button class="bg-red-600 p-1 rounded hover:bg-red-500">🗑️</button>
+                    <form id="delete-form-{{ ( $loop->index) }}" action="{{ route('movie.destroy', $loop->index) }}" 
+                        method="POST" style="display: none">
+                        @csrf
+                        @method('DELETE')
+                    </form>
+                <a href="{{ route('movie.destroy', $loop->index) }}" onclick="event.preventDefault(); confirm('yakin mau dihapus?🥲'); document.getElementById('delete-form-{{ $loop->index }}').submit();" class="bg-red-600 p-1 rounded hover:bg-red-500">🗑️</a>
             </div>
         </div>
     </a>
