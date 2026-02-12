@@ -2,7 +2,7 @@
 
 namespace App\View\Components\Movie;
 
-use Carbon\Carbon;
+use Illuminate\Support\Carbon;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -21,8 +21,18 @@ class Card extends Component
     {
         $this->index = $index;
         $this->title = $title;
-        $this->releasedate = Carbon::parse($releasedate)->format('M d, Y');
+        $this->releasedate = $releasedate;
         $this->image = $image;
+
+        if($this->isValid()) {
+        $this->title = Str::upper($title);
+        $this->releasedate = Carbon::parse($releasedate)->format('M d, Y');
+        }
+    }
+
+    private function isValid() : bool
+    {
+        return $this->title && $this->releasedate && $this->image;
     }
 
     /**
@@ -30,7 +40,9 @@ class Card extends Component
      */
     public function render(): View|Closure|string
     {
-        $this->title = Str::upper($this->title);
+        if(!$this->isValid()) {
+            return '';
+        }
         return view('components.movie.card');
     }
 }
