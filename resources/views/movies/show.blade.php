@@ -27,7 +27,8 @@
         </p>
 
         <div class="flex space-x-4 mt-5">
-            <button class="bg-green-600 p-1 rounded hover:bg-green-500">✏️</button>
+            <a href="{{ route('movie.edit', $movieId) }}" 
+            class="bg-green-600 p-1 rounded hover:bg-green-500">✏️</a>
             <button class="bg-red-600 p-1 rounded hover:bg-red-500">🗑️</button>
         </div>
     </div>
