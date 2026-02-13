@@ -30,4 +30,17 @@ class StoreMovieRequest extends FormRequest
             'image' => 'required',
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+        'title.required' => 'judulnya diisi woy',
+        'description.required' => 'minimal kasih deskripsinya lah',
+        'description.min' => 'minimal harus 3 karakter',
+        'release_date.required' => 'mana tanggalnya????',
+        'cast.required' => 'siapa ini yang cast-nya?',
+        'genres.required' => 'mana genrenya? hedehhh',
+        'image.required' => 'posternya belum ada?, kasih lah!',
+        ];
+    }
 }
