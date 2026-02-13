@@ -62,7 +62,7 @@ Route::get('/', function () {
             'release_date' => '2023-06-16',
             'cast' => ['Ezra Miller', 'Michael Keaton', 'Sasha Calle', 'Ben Affleck', 'Ron Livingston'],
             'genres' => ['Action', 'Adventure', 'Fantasy'],
-            'image' => '',
+            'image' => 'https://image.tmdb.org/t/p/w500/3GrRgt6CiLIUXUtoktcv1g2iwT5.jpg',
         ],
         [
             'title' => 'Fast X',
