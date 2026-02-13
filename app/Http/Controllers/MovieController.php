@@ -130,7 +130,7 @@ class MovieController extends Controller implements HasMiddleware
     {
         $request->validate([
             'title' => 'required',
-            'description' => 'required',
+            'description' => 'required|min:5',
             'release_date' => 'required',
             'cast' => 'required',
             'genres' => 'required',
