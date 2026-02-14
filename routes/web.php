@@ -209,3 +209,10 @@ Route::middleware('cache.headers:public;max_age=2628000;etag')->group(function (
 Route::get('/external', function () {
     return redirect('/');
 });
+
+Route::get('/session', function (Request $request)  {
+    $request->session()->put('is_membership', 'yes');
+    $request->session()->get('is_membership');
+    session(['is_membership' => 'yes']);
+    return session('is_membership');
+});
