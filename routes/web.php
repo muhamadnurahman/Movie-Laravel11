@@ -211,8 +211,7 @@ Route::get('/external', function () {
 });
 
 Route::get('/session', function (Request $request)  {
-    $request->session()->put('is_membership', 'yes');
-    $request->session()->get('is_membership');
-    session(['is_membership' => 'yes']);
-    return session('is_membership');
+    // session(['days' => ['Friday', 'Saturday', 'Sunday']]);
+    session()->push('days', 'Monday');
+    return $request->session()->all(); 
 });
