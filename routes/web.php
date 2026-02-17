@@ -5,6 +5,7 @@ use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
+use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
     $movies = [
@@ -219,3 +220,5 @@ Route::get('/session', function (Request $request)  {
 
     return $request->session()->all(); 
 });
+
+Route::get('categories', [CategoryController::class, 'index']);
