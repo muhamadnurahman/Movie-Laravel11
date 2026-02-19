@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
+use function Symfony\Component\Clock\now;
 
 class CategoryController extends Controller
 {
@@ -18,14 +21,35 @@ class CategoryController extends Controller
         //     ->where('id', 1)
         //     ->select(['id', 'name', 'slug'])->first(); 
 
-        // $categories = Category::all();
+        $categories = Category::all();
         // $categories = Category::whereIn('id', [1, 2, 5])
         //     ->select(['id', 'name', 'slug'])
         //     ->get();
-        $categories = Category::where('id', 1)
-            ->select(['id', 'name', 'slug'])
-            ->first();
+        // $categories = Category::where('id', 1)
+        //     ->select(['id', 'name', 'slug'])
+        //     ->first();
 
         return $categories;
+    }
+
+    public function store(Request $request)
+    {
+        // $category = DB::table('categories')->insert([
+        //     'name' => $request['name'],
+        //     'slug' => Str::of($request['name'])->slug('-'),
+        //     'created_at' => now(),
+        //     'updated_at' => now(),
+        // ]);
+
+        // $category = DB::table('categories')->insert([
+
+        $category = DB::table('categories')->insert([
+            ['name' => 'Komedi', 'slug' => Str::of('komedi')->slug('-')],
+            ['name' => 'Drama Jepang', 'slug' => Str::of('Drama Jepang')->slug('-')],
+            ['name' => 'Drama Korea', 'slug' => Str::of('Drama Korea')->slug('-')],
+        ]);
+
+
+        return $category;
     }
 }
