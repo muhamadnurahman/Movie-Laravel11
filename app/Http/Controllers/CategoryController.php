@@ -92,4 +92,18 @@ class CategoryController extends Controller
 
         return $category;
     }
+
+    public function destroy($id)
+    {
+        // DB::table('categories')->where('id',$id)->delete();
+
+        // $category = Category::find($id);
+        // if($category) {
+        //     $category->delete();
+        // }
+
+        Category::destroy($id);
+
+        return true;
+    }
 }
