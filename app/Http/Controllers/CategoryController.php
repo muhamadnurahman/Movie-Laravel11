@@ -71,7 +71,20 @@ class CategoryController extends Controller
 
     public function update(Request $request, $id)
     {
-        $category = DB::table('categories')->where('id', $id)->update([
+        // $category = DB::table('categories')->where('id', $id)->update([
+        //     'name' => $request['name'],
+        //     'slug' => Str::of($request['name'])->slug('-'),
+        //     'updated_at' => now(),
+        // ]);
+
+        // $category = Category::find($id);
+        // if($category) {
+        //     $category->name = $request['name'];
+        //     $category->slug = Str::of($request['name'])->slug('-');
+        //     $category->save();
+        // }
+
+        $category = Category::where('id', $id)->update([
             'name' => $request['name'],
             'slug' => Str::of($request['name'])->slug('-'),
             'updated_at' => now(),
