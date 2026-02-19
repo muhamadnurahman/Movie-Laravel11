@@ -43,13 +43,29 @@ class CategoryController extends Controller
 
         // $category = DB::table('categories')->insert([
 
-        $category = DB::table('categories')->insert([
-            ['name' => 'Komedi', 'slug' => Str::of('komedi')->slug('-')],
-            ['name' => 'Drama Jepang', 'slug' => Str::of('Drama Jepang')->slug('-')],
-            ['name' => 'Drama Korea', 'slug' => Str::of('Drama Korea')->slug('-')],
+        // $category = DB::table('categories')->insert([
+        //     ['name' => 'Komedi', 'slug' => Str::of('komedi')->slug('-')],
+        //     ['name' => 'Drama Jepang', 'slug' => Str::of('Drama Jepang')->slug('-')],
+        //     ['name' => 'Drama Korea', 'slug' => Str::of('Drama Korea')->slug('-')],
+        // ]);
+
+        // $category = new Category();
+
+        // $category->name = $request['name'];
+        // $category->slug = Str::of($request['name'])->slug('-');
+
+        // $category->save();
+
+        // $category = Category::create([
+        //     'name' => $request['name'],
+        //     'slug' => Str::of($request['name'])->slug('-'),
+        // ]);
+
+        $categories = Category::insert([
+            ['name' => 'Komedi 123', 'slug' => Str::of('Komedi 123')->slug('-')],
+            ['name' => 'Drama jepang 123', 'slug' => Str::of('Drama jepang 123')->slug('-')],
         ]);
 
-
-        return $category;
+        return $categories;
     }
 }
