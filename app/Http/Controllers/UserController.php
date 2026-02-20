@@ -18,4 +18,17 @@ class UserController extends Controller
 
         return $user;
     }
+
+    public function userProfile()
+    {
+        $user = User::all();
+
+        //lazi loading
+        // return $user->profile;
+
+        //eager loading
+        // return $user->load('profile');
+
+        return $user;
+    }
 }
